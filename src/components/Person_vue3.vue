@@ -36,12 +36,20 @@ export default{
 
 // 写法2
 <script setup>
-import {ref,reactive} from 'vue'
+import {ref,reactive,toRefs} from 'vue'
 defineOptions({name: 'Person_vue3'})
 
-let name= ref("李四")
-let age= ref(17)
-let tel= ref("13155556888")
+// let name= ref("李四")
+// let age= ref(17)
+// let tel= ref("13155556888")
+
+// 使用toRefs解构赋值，以保持响应性
+let person = reactive({
+    name: "李四",
+    age: 17,
+    tel: 13155556888
+})
+let {name,age,tel} = toRefs(person)
 
 function changeName(){
     name.value = "李五"
