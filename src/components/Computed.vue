@@ -4,17 +4,39 @@
         <!-- v-bind单向绑定，v-model双向绑定 -->
         姓：<input type="text" v-model="firstName"> <br>
         名：<input type="text" v-model="lastName"> <br>
-        全名：<span>{{ firstName }}-{{ lastName }}</span>
+        <!-- 需求：将姓名首字母大写 -->
+         <!-- 全名：<span>{{ firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + lastName.value }}</span> -->
+        全名：<span>{{ fullName }}</span>
+        <button @click="changeFullName">将全名改为li-si</button>
     </div>
 </template>
 
 <script setup>
 defineOptions({ name: "Computed" })
-import {ref} from 'vue'
+import {computed, ref} from 'vue'
 
-let firstName = ref("张")
-let lastName = ref("三")
-let fullName = ref("张三")
+let firstName = ref("zhang")
+let lastName = ref("san")
+
+// fullName只读
+// let fullName = computed(() => {
+//     return firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + "-" + lastName.value
+// })
+let fullName = computed({
+    get(){
+        return firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + "-" + lastName.value
+    },
+    set(val){
+        let [first, last] = val.split("-")
+        firstName.value = first
+        lastName.value = last
+    }
+})
+
+// 定义了计算属性的set()的情况下，对其进行修改会调用set()
+function changeFullName(){
+    fullName.value = "li-si"
+}
 </script>
 
 <style scoped>

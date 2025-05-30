@@ -4,7 +4,7 @@
         <!-- <Person_vue2/>   
         <Person_vue3/>   
         <vfor/> -->
-        <Computed/>
+        <!-- <Computed/> -->
     </div>
     
 </template>
