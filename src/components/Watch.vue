@@ -19,6 +19,15 @@
         <h3>年龄:{{ person.age }}</h3>
         <button @click="changeName">改变名字</button>
         <button @click="changAge">改变年龄</button>
+        <button @click="changPerson">改变张三</button>
+
+        <h2>3. reactive定义的对象类型数据</h2>
+        <span>对于reactive定义的对象类型,监视时默认开启深度监视</span>
+        <h3>汽车:{{ car.brand }}</h3>
+        <h3>价格:{{ car.price }}</h3>
+        <button @click="changeBrand">改变品牌</button>
+        <button @click="changPrice">改变价格</button>
+        <button @click="changCar">改变车</button>
     </div>
 </template>
 
@@ -50,6 +59,33 @@ function changeName(){
 function changAge(){
     person.value.age += 1
 }
+function changPerson(){
+    person.value = {name:'李四',age:108}
+}
+
+watch(person,(newVal,oldVal) => {
+    console.log("person变化:",newVal,oldVal)
+},{deep:true}) // 需开启深度监视,才能监视到内部属性变化,负责只能监视到内存地址的改变
+
+
+/** 情况三 */
+let car = reactive({
+    brand:'宝马',
+    price: 99
+})
+
+function changeBrand(){
+    car.brand += '~'
+}
+function changPrice(){
+    car.price += 1
+}
+function changCar(){
+    Object.assign(car,{brand:"奥迪",price:9999})
+}
+watch(car,(newVal,oldVal) => {
+    console.log("car改变:",newVal,oldVal);
+})
 
 </script>
 
