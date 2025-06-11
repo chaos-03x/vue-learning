@@ -66,7 +66,7 @@ person.value = {name:'李四',age:108}
 
 watch(person,(newVal,oldVal) => {
 console.log("person变化:",newVal,oldVal)
-},{deep:true}) // 需开启深度监视,才能监视到内部属性变化,负责只能监视到内存地址的改变
+},{deep:true}) // 需开启深度监视,才能监视到内部属性变化,否则只能监视到内存地址的改变
 
 
 /** 情况三 */
