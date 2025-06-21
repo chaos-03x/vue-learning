@@ -8,7 +8,7 @@
 
 <script setup>
 defineOptions({name:'props'})
-import {defineProps} from 'vue';
+// import {defineProps} from 'vue'; // 宏函数，可不用引入
 
 let data = defineProps(['text','list'])    // 用数组接收，返回值是一个对象
 

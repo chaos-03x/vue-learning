@@ -9,12 +9,15 @@
         <watch_2/> -->
         <!-- <watchEffect/> -->
          <!-- <ref/> -->
-        <props text="这是一条来自App.vue的字符串" :list="personList"/>
+        <!-- <props text="这是一条来自App.vue的字符串" :list="personList"/> -->
+        <!-- <lifecycle/> -->
+        <hooks/>
     </div>
     
 </template>
 
 <script setup>
+import { reactive } from 'vue'
 import Person_vue2 from './components/Person_vue2.vue'
 import Person_vue3 from './components/Person_vue3.vue'
 import vfor from './components/V-for.vue'
@@ -24,7 +27,8 @@ import watch_2 from './components/Watch_2.vue'
 import watchEffect from './components/watchEffect.vue'
 import ref from './components/Ref_get_element.vue';
 import props from './components/Props_get_element.vue';
-import { reactive } from 'vue'
+import Lifecycle from './components/Lifecycle.vue'
+import hooks from './components/hooks.vue';
 
 // 使用setup组件式API的情况下，不需要export default（Options API的写法）
 // export default {
