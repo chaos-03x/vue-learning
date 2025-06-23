@@ -10,17 +10,9 @@
 
 <script setup>
 defineOptions({name:'hooks'})
-import axios from "axios";
-import { reactive } from "vue";
-
-let dogList = reactive([])
-
-async function getDog() {
-    let result = await axios.get('https://dog.ceo/api/breed/pembroke/images/random')
-    console.log(`axios.get return:${result.data}`);
-    dogList.push(result.data.message)
-}
-
+import useDog from '@/hooks/useDog.js'
+ 
+ const {dogList, getDog} = useDog()
 </script>
 
 <style scoped>
